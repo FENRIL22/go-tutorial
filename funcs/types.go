@@ -2,6 +2,11 @@ package types
 
 import "fmt"
 
+func returnstring() string{
+	//return string on program on Printf rule
+	return fmt.Sprint("hoge")
+}
+
 func Printer() int {
 	var ps int = 10
 
@@ -11,6 +16,7 @@ func Printer() int {
 	//insert space at "," point
 	fmt.Println("Second point is",ps)
 	//and more...
+	fmt.Println(returnstring())
 
 	return 0
 }
