@@ -14,6 +14,7 @@ func Printer() int {
 	//c printf like
 	fmt.Printf("First point is %v\n", ps)
 	//insert space at "," point
+	//for non space, use "+"
 	fmt.Println("Second point is",ps)
 	//and more...
 	fmt.Println(returnstring())

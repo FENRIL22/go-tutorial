@@ -1,16 +1,11 @@
 package main
 
 import (
+	//基本的に1ファイル内において1依存まで
 	"fmt"
-	///githubのを入れるなら
-	//github.com/user/package
-	//下の書き方もできる
-	"./funcs"
-	//gopherjsとかの時は以下のようにして誤魔化す
-	//"github.com/fenril22/template/funcs"
-	//もしくはライブラリを機能として作り込んで、githubに入れる
-	//多分トップを指定すると自動的に全体を指定してくれるはずなので
-	//こちらの方が多分スマート
+	"github.com/fenril22/template/funcs"
+	"github.com/fenril22/template/control"
+	"github.com/fenril22/template/moretype"
 )
 
 func main(){
@@ -26,4 +21,21 @@ func main(){
 	types.Casting()
 	fmt.Println("--Constants-")
 	types.Constants()
+	fmt.Println("--controller-")
+	controller.Dffsample()
+	fmt.Println("--pointer-")
+	moretype.Pointer()
+	fmt.Println("--Struct-")
+	moretype.Mkstruct()
+	moretype.Strpointer()
+	moretype.Globalvprint()
+	fmt.Println("--Slices--")
+	moretype.Printarray()
+	moretype.Printsliceabnormal()
+	moretype.Printslicepat1()
+	moretype.Printslicenormal()
+	moretype.Printsliceofslice()
+	moretype.Printsliceappend()
+	moretype.Printrange()
+	moretype.Printmap()
 }
