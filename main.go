@@ -6,6 +6,7 @@ import (
 	"github.com/fenril22/template/funcs"
 	"github.com/fenril22/template/control"
 	"github.com/fenril22/template/moretype"
+	"github.com/fenril22/template/templateandmethod"
 )
 
 func main(){
@@ -38,4 +39,14 @@ func main(){
 	moretype.Printsliceappend()
 	moretype.Printrange()
 	moretype.Printmap()
+	fmt.Println("--methods--")
+	hoge := templateandmethod.NewVertex(3.2,2.4)
+	hoge.Scale(1.0)
+	fmt.Println(hoge)
+	fmt.Println("--interface--")
+	fuga := templateandmethod.NewI()
+	fuga.Say()
+	piyo := templateandmethod.NewII()
+	piyo.Say()
+	templateandmethod.Printsaya("yes")
 }
