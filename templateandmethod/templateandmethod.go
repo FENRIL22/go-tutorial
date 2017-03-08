@@ -145,3 +145,52 @@ func Printsaya(i interface{}){
 >> 実装を隠したい -> interface + struct + method(for interface)
 >>>> interfaceへの実装とstructへの実装がぶつかった時にどういう挙動をするか
 */
+
+//goのダックタイピング//
+//goはダックタイピングを採用しているため，その項目が実装されてさえいれば，そのインタフェースとしてみなすということができる
+//つまり，以下のように標準で設定されているメソッドを定義することにより，その標準でのインタフェースと同様の振舞いができ，その結果デバッグや処理の入出力において利便性が上がる．
+//方法は，普通にその型にメソッドを実装するだけであるが，interfaceの時同様pointerレシーバと変数宣言時の宣言方法(ポインタなど)に注意
+
+//Stringer (fmt interface)
+//interface宣言は次のとおり
+//type Stringer interface{
+//	String() string
+//}
+//これを以下のように用意すると自動的にその形式で出力が行われる．
+//なおこの時上のようなinterfaceを宣言する必要はない
+type S1 struct{
+	x,y int
+}
+func (s S1) String() string {
+	return fmt.Sprintf("x: %v y: %v, x*y : %v", s.x, s.y, s.x*s.y)
+}
+func NewS1(x, y int) *S1 {
+	return &S1{x,y}
+}
+
+//Error
+//type error interface {
+//    Error() string
+//}
+//基本的に成功=nil/失敗=それ以外
+//それ以外の時の値にエラー対応を割り当てたり表示を分かりやすくするのに用いる
+type ErrNegativeSqrt float64
+
+func (e ErrNegativeSqrt) Error() string {
+	return fmt.Sprint("cannot Sqrt negative number: ",float64(e))
+}
+
+func Sqrt(x float64) (float64, error) {
+	if x<0.{
+		return 0, ErrNegativeSqrt(x)
+	}
+	z := 1.
+
+	for i:= 0 ; i<=10; i++ {
+		z = z - (z*z-x)/(2*z)
+	}
+	return z, nil
+}
+
+//io.Reader
+//A tour of go21(Readers)
