@@ -193,4 +193,13 @@ func Sqrt(x float64) (float64, error) {
 }
 
 //io.Reader
-//A tour of go21(Readers)
+//Reader/Writerは必要になった時に勉強
+//たぶんあらゆる入力をByteとして受け取れるので便利なのでは
+//rot13Reader
+
+//images
+//imageとimage/colorsをimportする
+//で、指定されたtemplateを全て実装することでImage型として認識されるようになる
+
+
+
